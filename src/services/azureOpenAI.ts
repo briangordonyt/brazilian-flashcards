@@ -16,19 +16,19 @@ class AzureOpenAIService {
         try {
             const response = await this.client.getChatCompletions(
                 AZURE_OPENAI_CONFIG.deploymentName,
+                [
+                    {
+                        role: "system",
+                        content: "You are a helpful assistant that generates Portuguese vocabulary words. Only respond with comma-separated words, nothing else."
+                    },
+                    {
+                        role: "user",
+                        content: `Generate 3 incorrect Portuguese words that are different from "${correctAnswer}" but are in the same category (e.g., if it's an animal, generate other animals).`
+                    }
+                ],
                 {
-                    messages: [
-                        {
-                            role: "system",
-                            content: "You are a helpful assistant that generates Portuguese vocabulary words. Only respond with comma-separated words, nothing else."
-                        },
-                        {
-                            role: "user",
-                            content: `Generate 3 incorrect Portuguese words that are different from "${correctAnswer}" but are in the same category (e.g., if it's an animal, generate other animals).`
-                        }
-                    ],
                     temperature: 0.7,
-                    max_tokens: 50
+                    maxTokens: 50
                 }
             );
 
