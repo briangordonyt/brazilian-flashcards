@@ -1,4 +1,5 @@
-import { OpenAIClient, AzureKeyCredential } from '@azure/openai';
+import { OpenAIClient } from '@azure/openai';
+import { AzureKeyCredential } from '@azure/core-auth';
 import { AZURE_OPENAI_CONFIG } from '../config/azure-config';
 
 class AzureOpenAIService {
