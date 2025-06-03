@@ -18,6 +18,8 @@ jobs:
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: false
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
